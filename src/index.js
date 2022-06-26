@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createClient, Provider } from 'urql';
+const cliptoClient = createClient({
+  url: 'https://api.thegraph.com/subgraphs/name/clipto-platform/clipto-subgraph-mainnet',
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider value={cliptoClient}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
